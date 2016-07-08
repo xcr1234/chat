@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"  
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
+          http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"  
+          version="3.0">  
+	<display-name>chat</display-name>
+
+	<filter>
+		<filter-name>characterFilter</filter-name>
+		<filter-class>com.oraclewdp.chat.CharacterFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>characterFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>characterFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>com.oraclewdp.chat.ContextListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>com.oraclewdp.chat.SessionContext</listener-class>
+	</listener>
+
+
+	<servlet>
+		<servlet-name>loginServlet</servlet-name>
+		<servlet-class>com.oraclewdp.chat.action.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>loginServlet</servlet-name>
+		<url-pattern>/login.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginOutServlet</servlet-name>
+		<servlet-class>com.oraclewdp.chat.action.LoginOutServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>loginOutServlet</servlet-name>
+		<url-pattern>/logout.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>regServlet</servlet-name>
+		<servlet-class>com.oraclewdp.chat.action.RegServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>regServlet</servlet-name>
+		<url-pattern>/reg.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>chatCometServlet</servlet-name>
+		<servlet-class>com.oraclewdp.chat.comet.ChatCometServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported>  
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>chatCometServlet</servlet-name>
+		<url-pattern>/chat.comet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>sendMessageServlet</servlet-name>
+		<servlet-class>com.oraclewdp.chat.comet.SendMessageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>sendMessageServlet</servlet-name>
+		<url-pattern>/send.do</url-pattern>
+	</servlet-mapping>
+	
+
+</web-app>

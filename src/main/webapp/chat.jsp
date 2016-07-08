@@ -64,7 +64,7 @@
             }
             function iframeRefresh() {
                 var iframe1 = document.getElementById("comet-frame");
-                iframe1.src = "chat.comet";
+                iframe1.src = "chat.comet?"+Math.random();
             }
             
             function input_click(){

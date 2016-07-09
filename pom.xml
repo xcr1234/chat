@@ -60,6 +60,7 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -74,4 +75,7 @@
 		</plugins>
 
 	</build>
+	<properties>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 </project>
